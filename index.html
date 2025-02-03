@@ -193,16 +193,15 @@
 
             const formData = new FormData(this);
 
-            // Mengosongkan form setelah submit
-            this.reset();
+            // Menampilkan popup konfirmasi
+            if (window.confirm("Form berhasil diisi! Klik OK untuk melanjutkan.")) {
+                // Mengosongkan form setelah submit
+                this.reset();
 
-            // Menampilkan pesan sukses
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-
-            setTimeout(() => {
+                // Menyembunyikan pesan sukses jika ada
+                const successMessage = document.getElementById('successMessage');
                 successMessage.style.display = 'none';
-            }, 3000);
+            }
 
             // Simpan data ke Google Sheets menggunakan fetch jika diperlukan
             const data = Object.fromEntries(formData.entries());
