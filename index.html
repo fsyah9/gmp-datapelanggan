@@ -211,71 +211,16 @@
     </div>
 
     <script>
-        document.getElementById('datapelanggan').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah reload halaman
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxrnKkzKj-hkewpsqqNkluRUJnnu45673FL0k4TzBzSnP1s_AxhlCOPvROcAj63T0rRLA/exec'
+  const form = document.forms['datapelanggan']
 
-            const formData = new FormData(this);
-
-            // Mengosongkan form setelah submit
-            this.reset();
-
-            // Menampilkan pesan sukses
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-
-            setTimeout(() => {
-                successMessage.style
-                successMessage.style.display = 'none';
-            }, 3000);
-
-            // Memproses data tanggal untuk hanya menyimpan hari
-            const invoiceDateElement = document.getElementById('invoiceDate');
-            const paymentDateElement = document.getElementById('paymentDate');
-
-            const invoiceDay = invoiceDateElement.value.split('-')[2]; // Ambil hari saja
-            const paymentDay = paymentDateElement.value.split('-')[2]; // Ambil hari saja
-
-            // Tambahkan data hari ke formData
-            formData.set('invoiceDay', invoiceDay);
-            formData.set('paymentDay', paymentDay);
-
-            // Simpan data ke Google Sheets menggunakan fetch
-            const data = Object.fromEntries(formData.entries());
-            console.log('Data yang dikirim:', data);
-
-            // Contoh fetch untuk Google Apps Script (ganti URL dengan Apps Script Anda)
-            fetch('https://script.google.com/macros/s/AKfycbxrnKkzKj-hkewpsqqNkluRUJnnu45673FL0k4TzBzSnP1s_AxhlCOPvROcAj63T0rRLA/exec', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Data berhasil disimpan ke Google Sheets.');
-                } else {
-                    console.error('Terjadi kesalahan saat menyimpan data.');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-
-        // Atur input tanggal hanya untuk memilih hari (1-31)
-        document.getElementById('invoiceDate').addEventListener('focus', function() {
-            this.type = 'number';
-            this.placeholder = 'Pilih hari (1-31)';
-            this.min = 1;
-            this.max = 31;
-        });
-
-        document.getElementById('paymentDate').addEventListener('focus', function() {
-            this.type = 'number';
-            this.placeholder = 'Pilih hari (1-31)';
-            this.min = 1;
-            this.max = 31;
-        });
-    </script
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
 
 
