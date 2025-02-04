@@ -99,7 +99,81 @@
                 <label for="companyName">Nama Perusahaan/Customer</label>
                 <input type="text" id="companyName" name="companyName" required>
             </div>
-            <!-- Other form fields omitted for brevity -->
+             <div class="form-group">
+                <label for="npwpAddress">Alamat Perusahaan sesuai NPWP</label>
+                <input type="text" id="npwpAddress" name="npwpAddress" required>
+            </div>
+
+            <div class="form-group">
+                <label for="billingAddress">Alamat Perusahaan (Tukar Faktur / Penagihan)</label>
+                <input type="text" id="billingAddress" name="billingAddress" required>
+            </div>
+
+            <div class="form-group">
+                <label for="businessType">Jenis Bidang Usaha</label>
+                <select id="businessType" name="businessType" required>
+                    <option value="">Pilih Jenis Bidang Usaha</option>
+                    <option value="Manufakturing">Manufacturing</option>
+                    <option value="Trading">Traiding</option>
+                    <option value="Kontraktor">Kontraktor</option>
+                    <option value="Lain-lain">Lain-lain</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="purchasingName">Nama Purchasing</label>
+                <input type="text" id="purchasingName" name="purchasingName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="purchasingPosition">Jabatan</label>
+                <input type="text" id="purchasingPosition" name="purchasingPosition" required>
+            </div>
+
+            <div class="form-group">
+                <label for="purchasingPhone">No Whatsapp / No Tlp</label>
+                <input type="tel" id="purchasingPhone" name="purchasingPhone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="purchasingEmail">Email</label>
+                <input type="email" id="purchasingEmail" name="purchasingEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="financeName">Nama Keuangan</label>
+                <input type="text" id="financeName" name="financeName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="financePosition">Jabatan</label>
+                <input type="text" id="financePosition" name="financePosition" required>
+            </div>
+
+            <div class="form-group">
+                <label for="financePhone">No Whatsapp / No Tlp</label>
+                <input type="tel" id="financePhone" name="financePhone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="financeEmail">Email</label>
+                <input type="email" id="financeEmail" name="financeEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="npwpNumber">No. NPWP Perusahaan</label>
+                <input type="text" id="npwpNumber" name="npwpNumber" required>
+            </div>
+
+             <div class="form-group">
+                <label for="businessType">Berikat / Non Berikat</label>
+                <select id="npwpStatus" name="npwpStatus" required>
+                    <option value="">Pilihan</option>
+                    <option value="Berikat">Berikat</option>
+                    <option value="Non Berikat">Non Berikat</option>
+                </select>
+            </div>
+            
             <div class="form-group">
                 <label for="document1">Dokumen 1</label>
                 <input type="file" id="document1" name="document1" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
@@ -108,6 +182,26 @@
                 <label for="document2">Dokumen 2</label>
                 <input type="file" id="document2" name="document2" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
             </div>
+
+            <div class="form-group">
+                <label for="invoiceDate">Invoice terakhir di terima setiap tanggal berapa</label>
+                <input type="text" id="invoiceDate" name="invoiceDate" pattern="\d{1,2}" placeholder="Masukkan tanggal (1-31)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentDate">Payment dilakukan setiap tanggal berapa</label>
+                <input type="text" id="paymentDate" name="paymentDate" pattern="\d{1,2}" placeholder="Masukkan tanggal (1-31)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="partialInvoice">Apakah bisa dilakukan partsial invoice</label>
+                <select id="partialInvoice" name="partialInvoice" required>
+                    <option value="">Pilih</option>
+                    <option value="Ya">Ya</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <button type="submit">Simpan</button>
             </div>
@@ -116,7 +210,7 @@
     </div>
 
     <script>
-        const scriptURL = 'YOUR_SCRIPT_URL'; // Replace with your actual Google Apps Script URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxrnKkzKj-hkewpsqqNkluRUJnnu45673FL0k4TzBzSnP1s_AxhlCOPvROcAj63T0rRLA/exec'; // Replace with your actual Google Apps Script URL
         const form = document.forms['datapelanggan'];
         const successMessage = document.getElementById('successMessage');
 
