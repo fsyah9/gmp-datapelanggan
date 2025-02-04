@@ -94,12 +94,12 @@
     <div class="form-container">
         <h1>Form Data Pelanggan</h1>
         <form id="datapelanggan" name="datapelanggan">
-            <!-- Form fields -->
             <div class="form-group">
                 <label for="companyName">Nama Perusahaan/Customer</label>
                 <input type="text" id="companyName" name="companyName" required>
             </div>
-             <div class="form-group">
+
+            <div class="form-group">
                 <label for="npwpAddress">Alamat Perusahaan sesuai NPWP</label>
                 <input type="text" id="npwpAddress" name="npwpAddress" required>
             </div>
@@ -114,7 +114,7 @@
                 <select id="businessType" name="businessType" required>
                     <option value="">Pilih Jenis Bidang Usaha</option>
                     <option value="Manufakturing">Manufacturing</option>
-                    <option value="Trading">Traiding</option>
+                    <option value="Trading">Trading</option>
                     <option value="Kontraktor">Kontraktor</option>
                     <option value="Lain-lain">Lain-lain</option>
                 </select>
@@ -165,19 +165,20 @@
                 <input type="text" id="npwpNumber" name="npwpNumber" required>
             </div>
 
-             <div class="form-group">
-                <label for="businessType">Berikat / Non Berikat</label>
+            <div class="form-group">
+                <label for="npwpStatus">Berikat / Non Berikat</label>
                 <select id="npwpStatus" name="npwpStatus" required>
                     <option value="">Pilihan</option>
                     <option value="Berikat">Berikat</option>
                     <option value="Non Berikat">Non Berikat</option>
                 </select>
             </div>
-            
+
             <div class="form-group">
                 <label for="document1">Dokumen 1</label>
                 <input type="file" id="document1" name="document1" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
             </div>
+
             <div class="form-group">
                 <label for="document2">Dokumen 2</label>
                 <input type="file" id="document2" name="document2" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
@@ -210,28 +211,13 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxrnKkzKj-hkewpsqqNkluRUJnnu45673FL0k4TzBzSnP1s_AxhlCOPvROcAj63T0rRLA/exec'; // Replace with your actual Google Apps Script URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxrnKkzKj-hkewpsqqNkluRUJnnu45673FL0k4TzBzSnP1s_AxhlCOPvROcAj63T0rRLA/exec';
         const form = document.forms['datapelanggan'];
         const successMessage = document.getElementById('successMessage');
 
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', e => {
             e.preventDefault();
-            const formData = new FormData(form);
-
-            // Convert file inputs to Base64
-            const fileInputs = ['document1', 'document2'];
-            for (const inputName of fileInputs) {
-                const fileInput = document.querySelector(`[name="${inputName}"]`);
-                if (fileInput.files[0]) {
-                    const file = fileInput.files[0];
-                    const base64 = await toBase64(file);
-                    formData.append(inputName, base64);
-                    formData.append(`${inputName}_fileName`, file.name);
-                    formData.append(`${inputName}_mimeType`, file.type);
-                }
-            }
-
-            fetch(scriptURL, { method: 'POST', body: formData })
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(response => {
                     successMessage.style.display = 'block';
                     setTimeout(() => {
@@ -242,16 +228,6 @@
                 })
                 .catch(error => console.error('Error!', error.message));
         });
-
-        // Helper function to convert file to Base64
-        function toBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result.split(',')[1]);
-                reader.onerror = error => reject(error);
-            });
-        }
     </script>
 </body>
 </html>
