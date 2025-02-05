@@ -3,94 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Form untuk pengumpulan data pelanggan, termasuk informasi perusahaan, kontak purchasing, kontak keuangan, dan upload dokumen.">
-    <meta name="author" content="Your Company Name">
-    <meta name="keywords" content="Form Data Pelanggan, Data Pelanggan, Form Perusahaan, Dokumen Perusahaan">
     <title>Form Data Pelanggan</title>
     <style>
-        /* Gaya dasar untuk memastikan tata letak responsif dan menarik */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4; /* Warna latar belakang yang lembut */
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Pastikan form berada di tengah layar */
+            min-height: 100vh;
         }
 
         .form-container {
-            background: #fff; /* Warna dasar form */
-            padding: 20px 30px; /* Jarak dalam form */
-            border-radius: 8px; /* Sudut melengkung */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
-            width: 100%; /* Form akan memenuhi lebar layar jika kecil */
-            max-width: 800px; /* Batas maksimum lebar */
-            margin: 20px; /* Jarak di sekeliling */
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin: 20px;
         }
 
         .form-container h1 {
             text-align: center;
             margin-bottom: 20px;
-            color: #333; /* Warna teks untuk heading */
+            color: #333;
         }
 
         .form-group {
-            margin-bottom: 15px; /* Jarak antar elemen form */
+            margin-bottom: 15px;
             display: flex;
             flex-wrap: wrap;
-            align-items: center; /* Elemen sejajar secara vertikal */
+            align-items: center;
         }
 
         .form-group label {
-            flex: 0 0 40%; /* Lebar label */
+            flex: 0 0 40%;
             font-weight: bold;
             margin-bottom: 5px;
-            color: #555; /* Warna teks label */
+            color: #555;
         }
 
         .form-group input, .form-group select, .form-group button {
-            flex: 1; /* Form elemen akan mengisi ruang yang tersisa */
-            padding: 10px; /* Ruang dalam input */
-            border: 1px solid #ddd; /* Garis border input */
-            border-radius: 5px; /* Sudut melengkung */
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             font-size: 16px;
-            color: #333; /* Warna teks input */
+            color: #333;
         }
 
         .form-group input[type="file"] {
-            padding: 5px; /* Lebih kecil karena file input tidak memerlukan banyak ruang */
+            padding: 5px;
         }
 
         .form-group button {
-            background-color: #007bff; /* Warna tombol */
-            color: #fff; /* Warna teks tombol */
+            background-color: #007bff;
+            color: #fff;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* Efek hover */
         }
 
         .form-group button:hover {
-            background-color: #0056b3; /* Warna tombol saat hover */
+            background-color: #0056b3;
         }
 
         .success-message {
-            text-align: center; /* Pusatkan teks pesan sukses */
-            margin-top: 20px; /* Jarak atas */
-            color: green; /* Warna teks hijau */
+            text-align: center;
+            margin-top: 20px;
+            color: green;
             font-weight: bold;
-            display: none; /* Disembunyikan secara default */
+            display: none;
         }
 
-        /* Responsivitas untuk layar kecil */
         @media (max-width: 768px) {
             .form-container {
                 padding: 15px 20px;
             }
 
             .form-group label {
-                flex: 0 0 100%; /* Label akan memenuhi lebar layar */
+                flex: 0 0 100%;
                 margin-bottom: 5px;
             }
         }
@@ -98,30 +92,23 @@
 </head>
 <body>
     <div class="form-container">
-        <!-- Judul Form -->
         <h1>Form Data Pelanggan</h1>
-        
-        <!-- Form dimulai -->
-        <form id="datapelanggan" name="datapelanggan" enctype="multipart/form-data">
-            <!-- Input Nama Perusahaan -->
+        <form id="datapelanggan" name="datapelanggan">
             <div class="form-group">
                 <label for="companyName">Nama Perusahaan/Customer</label>
-                <input type="text" id="companyName" name="companyName" placeholder="Masukkan nama perusahaan" required>
+                <input type="text" id="companyName" name="companyName" required>
             </div>
 
-            <!-- Input Alamat sesuai NPWP -->
             <div class="form-group">
                 <label for="npwpAddress">Alamat Perusahaan sesuai NPWP</label>
-                <input type="text" id="npwpAddress" name="npwpAddress" placeholder="Masukkan alamat sesuai NPWP" required>
+                <input type="text" id="npwpAddress" name="npwpAddress" required>
             </div>
 
-            <!-- Input Alamat Penagihan -->
             <div class="form-group">
                 <label for="billingAddress">Alamat Perusahaan (Tukar Faktur / Penagihan)</label>
-                <input type="text" id="billingAddress" name="billingAddress" placeholder="Masukkan alamat penagihan" required>
+                <input type="text" id="billingAddress" name="billingAddress" required>
             </div>
 
-            <!-- Pilihan Jenis Usaha -->
             <div class="form-group">
                 <label for="businessType">Jenis Bidang Usaha</label>
                 <select id="businessType" name="businessType" required>
@@ -133,86 +120,110 @@
                 </select>
             </div>
 
-            <!-- Input Nama Purchasing -->
             <div class="form-group">
                 <label for="purchasingName">Nama Purchasing</label>
-                <input type="text" id="purchasingName" name="purchasingName" placeholder="Masukkan nama purchasing" required>
+                <input type="text" id="purchasingName" name="purchasingName" required>
             </div>
 
-            <!-- Input Jabatan Purchasing -->
             <div class="form-group">
                 <label for="purchasingPosition">Jabatan</label>
-                <input type="text" id="purchasingPosition" name="purchasingPosition" placeholder="Masukkan jabatan purchasing" required>
+                <input type="text" id="purchasingPosition" name="purchasingPosition" required>
             </div>
 
-            <!-- Input Kontak Purchasing -->
             <div class="form-group">
                 <label for="purchasingPhone">No Whatsapp / No Tlp</label>
-                <input type="tel" id="purchasingPhone" name="purchasingPhone" placeholder="Masukkan nomor telepon" required>
+                <input type="tel" id="purchasingPhone" name="purchasingPhone" required>
             </div>
 
-            <!-- Input Email Purchasing -->
             <div class="form-group">
                 <label for="purchasingEmail">Email</label>
-                <input type="email" id="purchasingEmail" name="purchasingEmail" placeholder="Masukkan email purchasing" required>
+                <input type="email" id="purchasingEmail" name="purchasingEmail" required>
             </div>
 
-            <!-- Tambahan Input untuk Keuangan -->
-            <!-- Input Nama Keuangan -->
             <div class="form-group">
                 <label for="financeName">Nama Keuangan</label>
-                <input type="text" id="financeName" name="financeName" placeholder="Masukkan nama bagian keuangan" required>
+                <input type="text" id="financeName" name="financeName" required>
             </div>
 
-            <!-- Input Jabatan Keuangan -->
             <div class="form-group">
                 <label for="financePosition">Jabatan</label>
-                <input type="text" id="financePosition" name="financePosition" placeholder="Masukkan jabatan bagian keuangan" required>
+                <input type="text" id="financePosition" name="financePosition" required>
             </div>
 
-            <!-- Input Kontak Keuangan -->
             <div class="form-group">
                 <label for="financePhone">No Whatsapp / No Tlp</label>
-                <input type="tel" id="financePhone" name="financePhone" placeholder="Masukkan nomor telepon keuangan" required>
+                <input type="tel" id="financePhone" name="financePhone" required>
             </div>
 
-            <!-- Input Email Keuangan -->
             <div class="form-group">
                 <label for="financeEmail">Email</label>
-                <input type="email" id="financeEmail" name="financeEmail" placeholder="Masukkan email keuangan" required>
+                <input type="email" id="financeEmail" name="financeEmail" required>
             </div>
 
-            <!-- Input Dokumen dan Lainnya -->
+            <div class="form-group">
+                <label for="npwpNumber">No. NPWP Perusahaan</label>
+                <input type="text" id="npwpNumber" name="npwpNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="npwpStatus">Berikat / Non Berikat</label>
+                <select id="npwpStatus" name="npwpStatus" required>
+                    <option value="">Pilihan</option>
+                    <option value="Berikat">Berikat</option>
+                    <option value="Non Berikat">Non Berikat</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="document1">Dokumen 1</label>
                 <input type="file" id="document1" name="document1" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
             </div>
 
-            <!-- Tombol Submit -->
+            <div class="form-group">
+                <label for="document2">Dokumen 2</label>
+                <input type="file" id="document2" name="document2" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+            </div>
+
+            <div class="form-group">
+                <label for="invoiceDate">Invoice terakhir di terima setiap tanggal berapa</label>
+                <input type="text" id="invoiceDate" name="invoiceDate" pattern="\d{1,2}" placeholder="Masukkan tanggal (1-31)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentDate">Payment dilakukan setiap tanggal berapa</label>
+                <input type="text" id="paymentDate" name="paymentDate" pattern="\d{1,2}" placeholder="Masukkan tanggal (1-31)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="partialInvoice">Apakah bisa dilakukan partsial invoice</label>
+                <select id="partialInvoice" name="partialInvoice" required>
+                    <option value="">Pilih</option>
+                    <option value="Ya">Ya</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <button type="submit">Simpan</button>
             </div>
         </form>
-
-        <!-- Pesan Sukses -->
         <div class="success-message" id="successMessage">Form berhasil diisi!</div>
     </div>
 
-    <!-- Script untuk menghubungkan dengan Google Apps Script -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxrnKkzKj-hkewpsqqNkluRUJnnu45673FL0k4TzBzSnP1s_AxhlCOPvROcAj63T0rRLA/exec';
         const form = document.forms['datapelanggan'];
         const successMessage = document.getElementById('successMessage');
 
         form.addEventListener('submit', e => {
-            e.preventDefault(); // Mencegah reload halaman saat form disubmit
+            e.preventDefault();
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(response => {
-                    successMessage.style.display = 'block'; // Tampilkan pesan sukses
+                    successMessage.style.display = 'block';
                     setTimeout(() => {
                         alert('Data berhasil disimpan!');
                         successMessage.style.display = 'none';
-                        form.reset(); // Reset form setelah sukses
+                        form.reset();
                     }, 500);
                 })
                 .catch(error => console.error('Error!', error.message));
